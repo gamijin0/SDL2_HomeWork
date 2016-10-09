@@ -21,7 +21,8 @@ class Lamp{
 
 public:
     //物理资源
-    std::string s_lamp;
+    std::string s_lamp_on;
+    std::string s_lamp_off;
     std::string s_background;
     std::string s_slider_background;
     std::string s_slider;
@@ -29,16 +30,26 @@ public:
     //软件资源
     SDL_Window* win;
     SDL_Renderer* ren;
-    SDL_Surface* lamp;
     SDL_Surface* background;
+    SDL_Surface* back;
+    SDL_Surface* lamp_on;
+    SDL_Surface* lamp_off;
     SDL_Surface* slider_background;
     SDL_Surface* slider;
+    SDL_Event event;
 
     //变量定义
     int Frame;
+    int width;
+    int height;
+    int slider_x;
+
 
     //初始化函数
     Lamp(const std::string&);
+
+    //析构函数
+    ~Lamp();
 
     //运行函数
     void run();
@@ -49,10 +60,18 @@ public:
     //内存中绘制画面
     void draw();
 
+    //初始化组件
     void setComponents(
-            const std::string& lamp,
+            const std::string& lamp_on,
+            const std::string& lamp_off,
             const std::string& slider_background,
             const std::string& slider);
+
+    //监听
+    void listen();
+
+    bool InArea();
 };
+
 
 #endif //SDLTEST1_LAMP_H
