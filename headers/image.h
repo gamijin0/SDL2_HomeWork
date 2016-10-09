@@ -21,6 +21,8 @@ void apply_surface(int x,int y,SDL_Surface* source,SDL_Surface* destination);
 //将指定颜色设置为透明
 void remove_background(SDL_Surface* su,Uint8 r,Uint8 g,Uint8 b);
 
-void BiltTexture(int x, int y, SDL_Texture * Draw_Texture,SDL_Renderer *Draw_Render);
+//绘图函数,最后一个参数为放大倍数
+void BiltTexture(int x, int y, SDL_Texture * Draw_Texture,SDL_Renderer *Draw_Render, float size);
+
 
 #endif //SDLTEST1_IMAGE_H

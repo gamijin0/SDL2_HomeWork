@@ -17,6 +17,7 @@ SDL_Surface *load_image( std::string filename )
     if( loadedImage == NULL )
     {
         printf("Img load Failed! [%s]\n",SDL_GetError());
+        exit(1);
     } else{
         printf("Pic[\"%s\"] loaded sucessfully.\n",filename.c_str());
     }
@@ -54,15 +55,26 @@ SDL_Texture* loadTexture(const std::string &file, SDL_Renderer *ren){
 
 
 void BiltTexture(int x, int y, SDL_Texture * Draw_Texture,
-                SDL_Renderer * Draw_Render)
+                SDL_Renderer * Draw_Render, float size=1)
 {
     SDL_Rect Draw_Render_Rect;
     Draw_Render_Rect.x = x;
     Draw_Render_Rect.y = y;
     int w = 0, h = 0;
     SDL_QueryTexture(Draw_Texture, NULL, NULL, &w, &h);
-    Draw_Render_Rect.w = w;
-    Draw_Render_Rect.h = h;
+    Draw_Render_Rect.w = int(w*size);
+    Draw_Render_Rect.h = int(h*size);
 
+//    std::cout<<"W:"<<w<<"  H:"<<h<<std::endl;
     SDL_RenderCopy(Draw_Render, Draw_Texture, NULL, &Draw_Render_Rect);
+}
+
+
+void ExtentTexture(float size,SDL_Texture* te,SDL_Renderer* ren){
+//    SDL_RenderCopyEx(
+//            ren,
+//            te,
+//
+//
+//    )
 }
