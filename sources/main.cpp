@@ -14,7 +14,7 @@ int main( int argc, char* args[] )
 
     //读入图片
     SDL_Surface* bmp= nullptr;
-    bmp = load_image("/home/chaos/Temp/hello.bmp");
+    bmp = load_image("/home/chaos/Temp/white.png");
 
     //加载图片
     SDL_Texture* tex = SDL_CreateTextureFromSurface(ren,bmp);//把SDL_Surface转化为SDL_Texture方便renderer绘制
@@ -29,10 +29,6 @@ int main( int argc, char* args[] )
     SDL_Delay(2000);
 
 
-//    销毁资源,关闭 SDL
-//    SDL_DestroyTexture(tex);
-//    SDL_DestroyRenderer(ren);
-//    SDL_DestroyWindow(win);
     SDL_Quit();
 
     return 0;
