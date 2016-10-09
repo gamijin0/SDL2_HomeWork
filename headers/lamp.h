@@ -54,8 +54,6 @@ public:
     //运行函数
     void run();
 
-    //更新画面
-    void update();
 
     //内存中绘制画面
     void draw();

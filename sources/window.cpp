@@ -35,7 +35,7 @@ SDL_Window* create_window(int x1=100,int y1=100,int x2=480,int y2=800){
 //从窗口创建渲染器
 SDL_Renderer* create_render(SDL_Window* win){
     SDL_Renderer* ren = nullptr;
-    ren = SDL_CreateRenderer(win,-1,SDL_RENDERER_ACCELERATED);
+    ren = SDL_CreateRenderer(win,-1,NULL);
     if(ren == nullptr){
         printf("Create Render Failed![%s]\n" ,SDL_GetError());
         exit(1);
