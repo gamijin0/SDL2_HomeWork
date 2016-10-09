@@ -12,5 +12,15 @@
 //图像加载函数
 SDL_Surface *load_image( std::string filename );
 
+//图像加载函数
+SDL_Texture* loadTexture(const std::string &file, SDL_Renderer *ren);
+
+//表面复制
+void apply_surface(int x,int y,SDL_Surface* source,SDL_Surface* destination);
+
+//将指定颜色设置为透明
+void remove_background(SDL_Surface* su,Uint8 r,Uint8 g,Uint8 b);
+
+void BiltTexture(int x, int y, SDL_Texture * Draw_Texture,SDL_Renderer *Draw_Render);
 
 #endif //SDLTEST1_IMAGE_H

@@ -11,18 +11,17 @@ void InitSDL(){
     if(SDL_Init(SDL_INIT_EVERYTHING)<0){
         std::cout<<"Error: "<<SDL_GetError()<<std::endl;
         exit(1);
-    } else{
-        printf("Init Successfully.\n");
     }
+    IMG_Init(IMG_INIT_PNG);
+    printf("Init Successfully.\n");
 }
 
 
 //创建窗口指针
-SDL_Window* create_window(){
+SDL_Window* create_window(int x1=100,int y1=100,int x2=480,int y2=800){
 
     SDL_Window* win = nullptr;
-    win = SDL_CreateWindow("MyWindow",100,100,640,480,SDL_WINDOW_SHOWN
-    );
+    win = SDL_CreateWindow("MyWindow",x1,y1,x2,y2,SDL_WINDOW_SHOWN);
 
     if(win== nullptr){
         printf("Create Window Failed![%s]\n" ,SDL_GetError());
@@ -36,7 +35,7 @@ SDL_Window* create_window(){
 //从窗口创建渲染器
 SDL_Renderer* create_render(SDL_Window* win){
     SDL_Renderer* ren = nullptr;
-    ren = SDL_CreateRenderer(win,-1,SDL_RENDERER_ACCELERATED|SDL_RENDERER_PRESENTVSYNC);
+    ren = SDL_CreateRenderer(win,-1,SDL_RENDERER_ACCELERATED);
     if(ren == nullptr){
         printf("Create Render Failed![%s]\n" ,SDL_GetError());
         exit(1);

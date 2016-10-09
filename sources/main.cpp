@@ -8,25 +8,23 @@ int main( int argc, char* args[] )
 
     InitSDL();
 
-    SDL_Window* win =create_window();
+    SDL_Window* win =create_window(100,100,980,800);
 
     SDL_Renderer* ren = create_render(win);
 
     //读入图片
-    SDL_Surface* bmp= nullptr;
-    bmp = load_image("/home/chaos/Temp/white.png");
+    SDL_Texture* bmp = loadTexture("/home/chaos/Temp/white.png",ren);
+    BiltTexture(0,0,bmp,ren);
 
-    //加载图片
-    SDL_Texture* tex = SDL_CreateTextureFromSurface(ren,bmp);//把SDL_Surface转化为SDL_Texture方便renderer绘制
-    SDL_FreeSurface(bmp);
+    SDL_Surface* lamp = load_image("/home/chaos/Temp/lamp1.png");
+    remove_background(lamp,0,0,0);
+    BiltTexture(100,200,SDL_CreateTextureFromSurface(ren,lamp),ren);
 
-    SDL_RenderClear(ren);
-    SDL_RenderCopy(ren,tex,NULL,NULL);
 
     SDL_RenderPresent(ren);
 
 
-    SDL_Delay(2000);
+    SDL_Delay(4000);
 
 
     SDL_Quit();

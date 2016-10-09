@@ -8,13 +8,17 @@
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
 #include <iostream>
+
 //初始化函数
 void InitSDL();
 
 //用于创建一个窗口
-SDL_Window* create_window();
+SDL_Window* create_window(int x1,int y1,int x2,int y2);
 
 //从一个窗口创建一个渲染器
 SDL_Renderer* create_render(SDL_Window* win);
+
+
+
 
 #endif //SDLTEST1_WINDOW_H
