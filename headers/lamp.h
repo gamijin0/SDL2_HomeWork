@@ -43,6 +43,7 @@ public:
     int width;
     int height;
     int slider_x;
+    bool On;
 
 
     //初始化函数

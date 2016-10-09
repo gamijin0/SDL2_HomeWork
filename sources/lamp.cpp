@@ -30,6 +30,8 @@ Lamp::Lamp(const std::string& filepath)  {
         this->back = load_image(this->s_background);
         apply_surface(0,0,back,this->background);
 
+        //默认关灯状态
+        this->On= false;
 }
 
 void Lamp::run() {
@@ -66,7 +68,12 @@ void Lamp::run() {
 void Lamp::draw() {
     SDL_UpdateWindowSurface(win);
     //开始渲染下一次的背景
-    apply_surface(0,0,back,this->background);
+    apply_surface(0,0,this->back,this->background);
+    if(this->On){
+        apply_surface(400,200,this->lamp_on,this->background);
+    } else{
+        apply_surface(400,200,this->lamp_off,this->background);
+    }
     apply_surface(this->width/2-80,this->height/2+100,this->slider_background,this->background);
     apply_surface(this->slider_x,this->height/2+105,this->slider,this->background);
 }
@@ -84,7 +91,9 @@ void Lamp::setComponents(
     this->s_slider = slider;
 
     this->lamp_on = load_image(lamp_on);
+    remove_background(this->lamp_on,0,0,0);
     this->lamp_off =load_image(lamp_off);
+    remove_background(this->lamp_off,0,0,0);
     this->slider_background = load_image(slider_background);
     remove_background(this->slider_background,0,0,0);
     this->slider = load_image(slider);
@@ -106,6 +115,11 @@ void Lamp::listen() {
         if(event.type==SDL_MOUSEMOTION && InArea() && event.button.button == SDL_BUTTON_LEFT) {
                 if (x >= 430 && x <= 530) {
                 slider_x = x - 50;
+                    if(x>500){
+                        this->On=true;
+                    } else{
+                        this->On= false;
+                    }
             }
         }
         if(event.type==SDLK_ESCAPE||event.type==SDL_QUIT){
