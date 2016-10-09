@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.6)
 project(SDLTest1)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 ")
-set(SOURCE_FILES main.cpp)
+set(SOURCE_FILES sources/main.cpp headers/window.h sources/window.cpp headers/image.h sources/image.cpp)
 
 INCLUDE(FindPkgConfig)
 
